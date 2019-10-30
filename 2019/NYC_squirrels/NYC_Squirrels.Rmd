@@ -1,0 +1,27 @@
+---
+title: "NYC_squirrels"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(lubridate))
+```
+
+Get data and format
+```{r}
+nyc_squirrels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv") %>% 
+  mutate_at(vars(date), mdy) #date conversion
+
+ 
+```
+
+
+```{r}
+ggplot(nyc_squirrels, aes(date)) + geom_bar()
+```
+
