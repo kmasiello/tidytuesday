@@ -25,3 +25,11 @@ nyc_squirrels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascie
 ggplot(nyc_squirrels, aes(date)) + geom_bar()
 ```
 
+Does squirrel activity vary by squirrel color? 
+```{r}
+data <- nyc_squirrels %>% 
+  select(primary_fur_color, highlight_fur_color, combination_of_primary_and_highlight_color,
+         kuks, quaas, moans,
+         tail_flags, tail_twitches, approaches, indifferent, runs_from, other_interactions)
+```
+
