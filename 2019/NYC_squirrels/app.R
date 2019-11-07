@@ -2,6 +2,12 @@ library(shiny)
 library(tidyverse)
 library(tidyr)
 
+# For git-backed deployment to Connet, first rsconnect::writemanifest() in the
+# project folder and commit to git.  Then whenever any updates to packages are
+# made, rewrite the manifest, re-commit to git.
+
+# rsconnect::writeManifest()
+
 ui <- fluidPage(
     
     titlePanel("NYC Squirrel Actions"), 
@@ -45,7 +51,7 @@ server <- function(input, output, session) {
             filter(primary_fur_color == input$squirrelChoice)
         
         ggplot(summaryLong, aes(x=action, y=count)) + 
-            geom_col(fill="darkblue", colour="black") +
+            geom_col(fill="chartreuse4", colour="black") +
             labs(title=paste(input$squirrelChoice,"Squirrel Observed Actions"), 
                  x= "Action", y="Fraction of Observations") + ylim(c(0,1))
         
